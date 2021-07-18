@@ -121,7 +121,6 @@ func getGames(context *gin.Context) {
 	})
 
 	// Visit all the pages from starting page
-	collector.AllowURLRevisit = true
 	if startingPage == 0 {
 		collector.Visit(gamesUrl)
 		// After visiting no offset is required anymore only the limit
@@ -281,6 +280,6 @@ func makeCollector() *colly.Collector {
 	} else {
 		collector = baseCollector.Clone()
 	}
-
+	collector.AllowURLRevisit = true
 	return collector
 }
