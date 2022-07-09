@@ -91,14 +91,15 @@ func (scraper *Scraper) ScrapeGames(title string, region string, limit int, offs
 		results := e.ChildText("span.value")
 		amountFound, _ = strconv.Atoi(strings.Split(results, " ")[0])
 	})
-	collector.OnHTML("div.page-size-filter", func(e *colly.HTMLElement) {
-		gamesPerPageString := e.ChildText("span.value")
-		logrus.Infoln(fmt.Sprintf("Found %v games per page", gamesPerPage))
-		gamesPerPage, _ = strconv.Atoi(gamesPerPageString)
+	collector.OnHTML("div.list-items", func(e *colly.HTMLElement) {
+		e.ForEach("div.game-list-item", func(index int, e *colly.HTMLElement) {
+			gamesPerPage += 1
+		})
 	})
 	err := collector.Visit(gamesUrl)
-	logrus.Infoln(amountFound)
-	logrus.Infoln(gamesUrl)
+	logrus.Infoln("Games per page", gamesPerPage)
+	logrus.Infoln("Amount found", amountFound)
+	logrus.Infoln("Games page url", gamesUrl)
 	if err != nil {
 		return CollectedGames{}, err
 	}
