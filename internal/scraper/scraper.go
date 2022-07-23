@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"net/url"
 	"os"
 	"strconv"
 	"strings"
@@ -84,7 +85,7 @@ func (scraper *Scraper) ScrapeGames(title string, region string, limit int, offs
 	// Collect all the games
 	gameChannel := make(chan *GameChannelElement, CHANNEL_SIZE)
 	// Check how many games there are and how many games per page
-	gamesUrl := fmt.Sprintf("%v/games/?title=%v&view=list", scraper.BaseURL, title)
+	gamesUrl := fmt.Sprintf("%v/games/?title=%v&view=list", scraper.BaseURL, url.QueryEscape(title))
 	var amountFound int
 	var gamesPerPage int
 	collector.OnHTML("span.search-results-counter", func(e *colly.HTMLElement) {
