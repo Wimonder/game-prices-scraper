@@ -1,4 +1,4 @@
-<div id="top"></div>
+<div id="top" align="center></div>
 
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
