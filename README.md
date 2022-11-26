@@ -1,7 +1,8 @@
-<div id="top" align="center></div>
+<div id="top" align="center>
 
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
+</div>
 <br />
 
 <div align="center">
