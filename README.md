@@ -1,11 +1,7 @@
 <div id="top" align="center">
-
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-
 </div>
-<br />
-
 <div align="center">
   <h3 align="center">Game Prices Scraper</h3>
 
