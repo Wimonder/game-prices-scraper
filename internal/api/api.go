@@ -54,6 +54,12 @@ func (manager *APIManager) RunManager() error {
 }
 
 func (manager *APIManager) createRoutes() {
+	manager.engine.GET("/healthcheck", func(context *gin.Context) {
+		context.JSON(http.StatusOK, gin.H{
+			"status": "ok",
+		})
+		return
+	})
 	manager.engine.GET("/regions", getRegions)
 	manager.engine.GET("/games", getGames)
 	manager.engine.GET("/game/:title", getGame)
